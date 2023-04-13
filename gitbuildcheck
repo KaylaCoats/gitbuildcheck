@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+from sys import argv
+import requests
+
+action = True
+
+if len(argv) > 3:
+    print('Usage: ./gitbuildcheck user/repo --shame or ./gitbuildcheck --shame user/repo')
+    exit(1)
+
+if argv[1] == '--shame':
+    repo = argv[2]
+else:
+    repo = argv[1]
+
+url = 'https://github.com/' + repo + '/actions/workflows/python-app.yml/badge.svg'
+
+r = requests.get(url)
+print(r.status_code)
+print(r.text)
+
+if '--shame' in argv:
+    if action is not True:
+        with open('runsiren.sh'):
+            exec(f.read())
+
+
+
