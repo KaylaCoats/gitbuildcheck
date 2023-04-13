@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from sys import argv
 import requests
 
 action = True
 
-if len(argv) > 3:
+if len(argv) > 3 or len(argv) == 1:
     print('Usage: ./gitbuildcheck user/repo --shame or ./gitbuildcheck --shame user/repo')
     exit(1)
 
@@ -18,6 +18,9 @@ url = 'https://github.com/' + repo + '/actions/workflows/python-app.yml/badge.sv
 r = requests.get(url)
 print(r.status_code)
 print(r.text)
+
+if r.status_code != 0:
+    action = False
 
 if '--shame' in argv:
     if action is not True:
