@@ -17,6 +17,8 @@ if len(argv) == 3 and '--shame' in argv:
         repo = argv[2]
     else:
         repo = argv[1]
+elif len(argv) == 2:
+    repo = argv[1]
 else:
     print_usage()
 
