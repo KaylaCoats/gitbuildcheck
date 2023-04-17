@@ -1,4 +1,4 @@
-import argv
+from sys import argv
 
 action = True
 
